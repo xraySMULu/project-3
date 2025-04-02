@@ -1,0 +1,32 @@
+{
+  "inventory": [
+    "mysterious book",
+    "torch",
+    "rope"
+  ],
+  "location": "Abandoned Library",
+  "visited_locations": [
+    "Starting Room",
+    "Bridge of Echoes",
+    "Abandoned Library"
+  ],
+  "story_summary": "Player: I open the ancient door with the torch raised. DM: The door creaks open slowly, revealing a dusty library. Player: I cross the bridge carefully.DM: The bridge creaks under your weight.",
+  "history": [
+    {
+      "user": "I cross the bridge carefully.",
+      "dm": "The bridge creaks under your weight, but you make it across."
+    },
+    {
+      "user": "I open the ancient door with the torch raised.",
+      "dm": "The door creaks open slowly, revealing a dusty library filled with shadows."
+    },
+    {
+      "user": "I open the ancient door with the torch raised.",
+      "dm": "The door creaks open slowly, revealing a dusty library filled with shadows."
+    },
+    {
+      "user": "I open the ancient door with the torch raised.",
+      "dm": "The door creaks open slowly, revealing a dusty library filled with shadows."
+    }
+  ]
+}
