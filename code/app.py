@@ -33,8 +33,12 @@ def vector_store(text_chunks):
     vector_store.save_local("faiss_db")
 
 def get_conversational_chain(tools,ques):
-    #os.environ["ANTHROPIC_API_KEY"]=os.getenv["ANTHROPIC_API_KEY"]
-    #llm = ChatAnthropic(model="claude-3-sonnet-20240229", temperature=0, api_key=os.getenv("ANTHROPIC_API_KEY"),verbose=True)
+    # Set environment variables from the .env in the local environment
+    load_dotenv()
+    # Set the OpenAI API key
+    ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY")
+    # os.environ["ANTHROPIC_API_KEY"]=os.getenv["ANTHROPIC_API_KEY"]
+    llm = ChatAnthropic(model="claude-3-sonnet-20240229", temperature=0, api_key=ANTHROPIC_API_KEY,verbose=True)
     llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0, api_key="")
     prompt = ChatPromptTemplate.from_messages(
     [
@@ -56,9 +60,7 @@ def get_conversational_chain(tools,ques):
     print(response)
     st.write("Reply: ", response['output'])
 
-def user_input(user_question):
-    
-    
+def user_input(user_question):   
     
     new_db = FAISS.load_local("faiss_db", embeddings,allow_dangerous_deserialization=True)
     
