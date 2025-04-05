@@ -1,11 +1,8 @@
-# **Project 3 Team 2 - Dungeon and Bots: Oh My! - Exploring AI in Fantasy Worlds**
-* The Battle
-![image](resources/content/rdme2.png)
-
-# AI Story Parser & Choose Your Adventure Generator
+# **Project 3 Team 2 - Mystic AI**
+# AI Story Creator & Adventure Generator
 
 ## Project Overview
-This project is an AI-powered tool designed to parse a story and generate a dynamic "Choose Your Adventure" experience. By leveraging Large Language Models (LLMs), the tool enables users to input a story, which is then processed to create an interactive branching narrative. 
+This project is an AI-powered tool designed to parse a story and generate a dynamic "Choose Your Adventure" experience. By leveraging Large Language Models (LLMs), the tool enables users to input a genre, which is then processed to create an interactive adventure narrative. 
 
 ## Package Requirements
 Ensure you have the following dependencies installed:
@@ -14,36 +11,32 @@ pip install langchain openai pinecone-client langchain-pinecone langchain-openai
 ```
 
 ## File Navigation
-- `main.py`: Entry point for the application
-- `parser.py`: Handles text parsing from PDFs
-- `generator.py`: Uses LLM to create branching story paths
+- `resources/website/app.py`: Entry point for the application
+- `resources/website/llm_init.py`: OpenAI LLM initialization and prompt handling
+- `resources/website/img_gen.py`: DALL-E 3 Image generaation helper
+- `resources/website/requirements.txt`: dependencies for the UI
+- `resources/website/icons`: images for the UI
 - `config.env`: Environment variables for API keys
 - `README.md`: This documentation
 
 ## Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-repo/ai-adventure.git
-   cd ai-adventure
+   git clone https://github.com/xraySMULu/project-3
    ```
 2. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
-3. Set up environment variables in a `.env` file:
-   ```
-   OPENAI_API_KEY=your_openai_api_key
-   PINECONE_API_KEY=your_pinecone_api_key
-   ```
 
 ## Usage
 1. Run the main script:
    ```bash
-   python main.py
+   streamlit run resources/website/app.py
    ```
-2. Upload a story in text or PDF format.
-3. The AI will parse the story and generate branching choices for an interactive experience.
-4. View or export the generated adventure.
+2. In the sidebar, enter your OpenAI API key.
+3. After entering the API key, please enter the genre/theme of your desired story. 
+4. The AI will parse the genre, execute a prompt and direct the user through an interactive experience.
 
 ## Demo & Slideshow
 Screenshots and walkthrough videos can be found in the `docs/demo` folder.
