@@ -13,7 +13,7 @@ pip install langchain openai pinecone-client langchain-pinecone langchain-openai
 ## File Navigation
 - `resources/website/app.py`: Entry point for the application
 - `resources/website/llm_init.py`: OpenAI LLM initialization and prompt handling
-- `resources/website/img_gen.py`: DALL-E 3 Image generaation helper
+- `resources/website/img_gen.py`: DALL-E 3 Image generation helper
 - `resources/website/requirements.txt`: dependencies for the UI
 - `resources/website/icons`: images for the UI
 - `config.env`: Environment variables for API keys
@@ -24,6 +24,7 @@ pip install langchain openai pinecone-client langchain-pinecone langchain-openai
    ```bash
    git clone https://github.com/xraySMULu/project-3
    ```
+2. cd resources/website/app.py
 2. Install dependencies:
    ```bash
    pip install -r requirements.txt
