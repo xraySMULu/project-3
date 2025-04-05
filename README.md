@@ -4,12 +4,6 @@
 ## Project Overview
 This project is an AI-powered tool designed to parse a story and generate a dynamic "Choose Your Adventure" experience. By leveraging Large Language Models (LLMs), the tool enables users to input a genre, which is then processed to create an interactive adventure narrative. 
 
-## Package Requirements
-Ensure you have the following dependencies installed:
-```bash
-pip install langchain openai pinecone-client langchain-pinecone langchain-openai python-dotenv pypdf
-```
-
 ## File Navigation
 - `resources/website/app.py`: Entry point for the application
 - `resources/website/llm_init.py`: OpenAI LLM initialization and prompt handling
