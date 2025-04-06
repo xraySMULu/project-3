@@ -1,8 +1,10 @@
 from langchain import OpenAI, ConversationChain, LLMChain, PromptTemplate
 from langchain.memory import ConversationBufferWindowMemory
 import os
+import kagglehub
 
-def initialize_model():
+def initialize_model():   
+    
     template = """
 ### Context ###
 You are Mystic AI, a guide through thrilling interactive fantasy adventures. Your mission is to immerse readers

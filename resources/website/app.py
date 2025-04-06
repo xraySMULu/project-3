@@ -15,6 +15,7 @@ def auth():
     st.session_state.genreBox_state = False  # Disable genre input box
     st.session_state.apiBox_state = True    # Enable API input box
 
+
 # Configure the Streamlit page (title, icon, layout, and menu)
 st.set_page_config(
     page_title='Mystic AI',  # Set page title
@@ -132,7 +133,7 @@ def get_story_and_image(user_resp):
         'Image': dalle_img
     }
     
-@st.cache_data(experimental_allow_widgets=True,show_spinner='Generating your story...')
+@st.cache_data(show_spinner='Generating your story...')
 # Function to handle user input, generate story content, and update session state
 def get_output(_pos: st.empty, el_id='', genre=''):
     st.session_state.keep_graphics = True
