@@ -46,21 +46,20 @@ The tool is designed for:
 ---
 
 ### File Navigation
+* Website
+   -  [Resources/website](Resources/website) - Directory containing all of the website files used by the code
+	-  `resources/website/app.py`: Entry point for the web application		
+	-  `resources/website/llm_init.py`: OpenAI LLM initialization and prompt handling
+	-  `resources/website/img_gen.py`: DALL-E 3 Image generation helper
+	-  `resources/website/requirements.txt`: dependencies for the UI
+	-  `resources/website/icons`: images for the UI
 
--  `resources/website/app.py`: Entry point for the application
-
--  `resources/website/llm_init.py`: OpenAI LLM initialization and prompt handling
-
--  `resources/website/img_gen.py`: DALL-E 3 Image generation helper
-
--  `resources/website/requirements.txt`: dependencies for the UI
-
--  `resources/website/icons`: images for the UI
-
--  `config.env`: Environment variables for API keys
-
--  `README.md`: This documentation
----
+* Project
+	-  [Resources/content](Resources/content) - Directory containing all of the image files used by the code
+ 	-  [Resources/data](Resources/data) - Directory containing all of the data files used by the code
+ 	-  [Resources/data](Resources/presentation) - Directory containing all of the presentation files used by the code 	
+ 	-  `README.md`: This documentation 	
+ ---
 
 ### How It Works
 1. **Setup**:
@@ -138,45 +137,151 @@ streamlit run resources/website/app.py
 
 ### Demo & Slideshow
 
-Slide deck in PDF can be found in the `resources\presentation` folder.
+**Demo**
+
+* Mystic AI Demo
+
+* Navigate to [Demo](Resources/content/mai_demo.gif)
+
+
+**Slideshow**
+
+* Project #3 - Team #2 - Slideshow
+
+* Navigate to [Slideshow PDF](Resources/presentation/proj3slideshow.pdf)
 
 ---  
 
 ### Data Pre-processing and Gathering Steps
 
-- Extract text from a provided PDF or text file
+For the Mystic AI application, the data and preprocessing steps involve preparing user inputs, managing API responses, and ensuring the generated content is suitable for display. Below is an outline of the data and preprocessing steps:
 
-- Segment the story into logical scenes
+1. **User Input Handling**:
+   - **Input**: Users provide a story genre or theme and their OpenAI API key.
+   - **Validation**: 
+     - Ensure the API key starts with `sk-` to confirm it is valid.
+     - Sanitize the genre input to remove unnecessary whitespace or invalid characters.
 
-- Identify choice points and generate alternatives
----  
-  
+2. **API Key Authentication**:
+   - Store the OpenAI API key securely in the session state.
+   - Set the key as an environment variable for use in API calls.
 
-### Visuals and Explanations
+3. **Language Model Response Processing**:
+   - **Input**: User-provided genre or story continuation is sent to OpenAI's ChatGPT.
+   - **Response Parsing**:
+     - Split the response into lines and filter out empty lines or separators (e.g., `-- -- --`).
+     - Identify and separate the story text, user choice labels, and options.
+     - Ensure options are limited to a maximum of 4 for better user experience.
 
-- Flowcharts depicting the branching logic
+4. **Image Prompt Extraction**:
+   - Extract the image prompt from the ChatGPT response (if present).
+   - Remove any lines related to image generation from the story text.
 
-- Screenshots of the generated story paths
----  
-  
+5. **Image Generation**:
+   - Use the extracted image prompt to generate an image with DALL-E.
+   - Validate the generated image:
+     - Ensure the image meets the minimum size requirement (e.g., 256x256 pixels).
+     - Resize the image if necessary to meet display requirements.
+
+6. **Session State Management**:
+   - Store the processed story, user options, and generated image in the session state.
+   - Maintain a list of story sections (`cols`) to dynamically render content.
+
+7. **Dynamic Content Rendering**:
+   - Use the processed data to display the story, user choices, and images in the app.
+   - Ensure user interactions (e.g., radio button selections) are captured and processed to generate the next part of the story.
+
+8. **Error Handling**:
+   - Handle API errors (e.g., invalid API key, rate limits) gracefully by displaying appropriate warnings.
+   - Provide fallback behavior if image generation fails (e.g., display text-only content).
+
+---
 
 ### Additional Explanations and Major Findings
+### Additional Explanations
 
-- The model effectively creates diverse branching paths
+1. **AI Integration**: Mystic AI combines OpenAI's ChatGPT for natural language processing and storytelling with DALL-E for generating visually appealing images. This integration demonstrates how AI can work cohesively to create an immersive user experience.
 
-- Some limitations in complex story logic may require human refinement
----  
-  
+2. **User Interactivity**: The application allows users to actively participate in the storytelling process by selecting themes and making choices that influence the narrative. This interactivity highlights the potential of AI to create personalized and engaging content.
 
-### Additional Questions That Surfaced and Plan for Future Development
+3. **Session State Management**: By leveraging Streamlit's session state, the app ensures a seamless user experience, maintaining story progression and user inputs across interactions without requiring page reloads.
 
-- How can we improve character consistency in AI-generated choices?
+4. **Error Handling**: The app includes mechanisms to validate user inputs (e.g., API key format) and handle potential API errors gracefully, ensuring reliability and usability.
 
-- Can we integrate a UI for better user interaction?
+5. **Scalability**: The modular design of the application allows for future enhancements, such as integrating additional AI models, expanding storytelling capabilities, or supporting more complex user interactions.
 
-- Future updates may include support for voice input and game export options
+---
 
-  
+### Major Findings
+
+1. **AI's Creative Potential**: The application demonstrates that AI can generate coherent, engaging, and contextually relevant stories and visuals, showcasing its potential in creative industries.
+
+2. **User Engagement**: Allowing users to influence the narrative through choices significantly enhances engagement, making the storytelling experience more interactive and personalized.
+
+3. **Seamless Integration**: The combination of ChatGPT and DALL-E highlights the effectiveness of integrating multiple AI models to deliver a unified experience.
+
+4. **Importance of Preprocessing**: Properly parsing and cleaning AI-generated responses is critical to ensuring the content is user-friendly and visually appealing.
+
+5. **Accessibility of AI**: By providing an intuitive interface, Mystic AI makes advanced AI technologies accessible to a broader audience, including those without technical expertise.
+
+6. **Challenges in Image Generation**: While DALL-E generates impressive visuals, ensuring the images meet size and quality requirements can be a challenge, requiring additional preprocessing steps.
+
+7. **Scalability and Adaptability**: The app's modular architecture allows for easy expansion, making it adaptable for various use cases, such as education, entertainment, or creative writing tools.
+
+### Additional questions that surfaced and plan for future development
+### Additional Questions That Surfaced
+
+1.  **How can we improve the coherence of AI-generated stories?**
+    
+    -   While ChatGPT generates engaging narratives, ensuring logical consistency across multiple story sections remains a challenge. How can we refine prompts or use memory mechanisms to improve this?
+2.  **What are the limits of user interactivity?**
+    
+    -   How many choices or branching paths can we realistically support before the complexity becomes unmanageable for both the user and the application?
+3.  **How can we optimize image generation?**
+    
+    -   DALL-E occasionally produces images that do not align perfectly with the story context. How can we improve prompt engineering or incorporate user feedback to refine image generation?
+4.  **What additional features would enhance user engagement?**
+    
+    -   Would features like saving stories, sharing them, or adding sound effects/music improve the overall experience?
+5.  **How scalable is the application?**
+    
+    -   As more users interact with the app, how can we ensure that API rate limits, server performance, and caching mechanisms can handle increased demand?
+### Plan for Future Development
+
+1.  **Enhance Story Coherence**:
+    
+    -   Implement memory mechanisms or context-passing techniques to ensure consistency across story sections.
+    -   Explore fine-tuning ChatGPT with custom datasets for more domain-specific storytelling.
+2.  **Expand User Interactivity**:
+    
+    -   Add support for more complex branching narratives and user-defined story elements.
+    -   Introduce a "sandbox mode" where users can directly edit or guide the story.
+3.  **Improve Image Generation**:
+    
+    -   Develop better prompt engineering techniques for DALL-E to align visuals more closely with the story.
+    -   Allow users to provide feedback on generated images and regenerate them if needed.
+4.  **Introduce Story Saving and Sharing**:
+    
+    -   Enable users to save their stories locally or in the cloud.
+    -   Add options to share stories on social media or export them as PDFs.
+5.  **Optimize Performance**:
+    
+    -   Implement caching mechanisms for frequently used API calls to reduce latency.
+    -   Explore server-side deployment options to handle higher user loads.
+6.  **Incorporate Additional AI Models**:
+    
+    -   Experiment with other AI models for storytelling or image generation, such as Stable Diffusion or GPT-4.
+    -   Add support for voice synthesis to narrate the story.
+7.  **Expand Use Cases**:
+    
+    -   Adapt the application for educational purposes, such as teaching creative writing or history through interactive stories.
+    -   Explore gamification elements to make the experience more engaging.
+8.  **User Feedback Integration**:
+    
+    -   Collect user feedback to identify pain points and prioritize new features.
+    -   Conduct usability testing to refine the interface and improve the overall experience.
+
+By addressing these questions and implementing these plans, Mystic AI can evolve into a more robust, scalable, and engaging platform that continues to push the boundaries of AI-driven storytelling.
 
 ### Conclusion and References
 
