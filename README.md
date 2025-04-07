@@ -3,22 +3,22 @@
 <img src="./resources/content/hdr.png" width="750">
 
 ## Table of Contents
-* [Project Overview](#overview)
-* [Features](#features)
-* [Purpose of Use](#purpose)
-* [File Navigation](#filenav)
-* [How It Works](#howit)
-* [Key Components](#keycomp)
-* [Installation](#installation)
-* [Usage Instructions](#usage)
-* [Demo and Slideshow](#demos)
-* [Application Development](#appdev)
-* [Additional Explanations](#addex)
-* [Major Findings](#majfind)
-* [Additional questions that surfaced](#addques)
-* [Plan For Future Development](#plan)
-* [Conclusion](#conclusion)
-* [References](#references)
+* [Project Overview](#Project-Overview)
+* [Features](#Features)
+* [Purpose of Use](#Purpose-of-Use)
+* [File Navigation](#File-Navigation)
+* [How It Works](#How-It-Works)
+* [Key Components](#Key-Components)
+* [Installation](#Installation)
+* [Usage Instructions](#Usage-Instructions)
+* [Demo and Slideshow](#Demo-and-Slideshow)
+* [Application Development](#Application-Development)
+* [Additional Explanations](#Additional-Explanations)
+* [Major Findings](#Major-Findings)
+* [Additional Questions](#Additional-Questions)
+* [Plan For Future Development](#Plan-For-Future-Development)
+* [Conclusion](#Conclusion)
+* [References](#References)
   
 
 ## Project Overview
@@ -27,6 +27,8 @@
 
 Mystic AI is a Streamlit-based web application that creates an interactive storybook experience using OpenAI's ChatGPT and DALL-E. Users can input a story genre or theme, and the app generates a dynamic story with accompanying images and user choices.
 
+[🔼 Back to top](#idtop)
+<hr>
 ---
 
 ## Features
@@ -49,6 +51,8 @@ Mystic AI is a Streamlit-based web application that creates an interactive story
 
 6. **Sidebar Configuration**:
    - Includes instructions, API key input, and app information.  
+[🔼 Back to top](#idtop)
+<hr>
 ---
 
 ## Purpose of Use
@@ -60,6 +64,8 @@ The tool is designed for:
 - Educational purposes
 
 - AI-assisted narrative generation
+[🔼 Back to top](#idtop)
+<hr>
 ---
 
 ## File Navigation
@@ -76,7 +82,9 @@ The tool is designed for:
  	-  [Resources/data](Resources/data) - Directory containing all of the data files used by the code
  	-  [Resources/data](Resources/presentation) - Directory containing all of the presentation files used by the code 	
  	-  `README.md`: This documentation 	
- ---
+[🔼 Back to top](#idtop)
+<hr>
+---
 
 ## How It Works
 1. **Setup**:
@@ -93,6 +101,8 @@ The tool is designed for:
 
 4. **Dynamic Updates**:
    - The app dynamically updates the story sections and maintains state across interactions.
+[🔼 Back to top](#idtop)
+<hr>
 ---
 
 ## Key Components
@@ -114,6 +124,8 @@ The tool is designed for:
 6. **Streamlit Widgets**:
    - Sidebar for API key input and instructions.
    - Main container for story input, clear/reset buttons, and story rendering.
+[🔼 Back to top](#idtop)
+<hr>
 ---
 
 ## Installation
@@ -135,6 +147,9 @@ git clone https://github.com/xraySMULu/project-3
 pip install -r requirements.txt
 
 ```
+[🔼 Back to top](#idtop)
+<hr>
+---
 
 ## Usage Instructions
 1. Run the main script:
@@ -150,7 +165,9 @@ streamlit run resources/website/app.py
 4. Click "Begin story" to start generating the story.
 5. Make choices at each story section to progress the story.
 6. Enjoy the interactive storytelling experience!
- ---
+[🔼 Back to top](#idtop)
+<hr>
+---
 
 ## Demo and Slideshow
 
@@ -173,6 +190,8 @@ streamlit run resources/website/app.py
 
 * Navigate to [Slideshow PDF](resources/presentation/proj3slideshow.pdf)
 
+[🔼 Back to top](#idtop)
+<hr>
 ---  
 
 ## Application Development
@@ -218,6 +237,8 @@ For the Mystic AI application, the application development steps involved prepar
    - Handle API errors (e.g., invalid API key, rate limits) gracefully by displaying appropriate warnings.
    - Provide fallback behavior if image generation fails (e.g., display text-only content).
 
+[🔼 Back to top](#idtop)
+<hr>
 ---
 
 ## Additional Explanations
@@ -231,6 +252,9 @@ For the Mystic AI application, the application development steps involved prepar
 4. **Error Handling**: The app includes mechanisms to validate user inputs (e.g., API key format) and handle potential API errors gracefully, ensuring reliability and usability.
 
 5. **Scalability**: The modular design of the application allows for future enhancements, such as integrating additional AI models, expanding storytelling capabilities, or supporting more complex user interactions.
+[🔼 Back to top](#idtop)
+<hr>
+---
 
 ## Major Findings
 
@@ -247,8 +271,11 @@ For the Mystic AI application, the application development steps involved prepar
 6. **Challenges in Image Generation**: While DALL-E generates impressive visuals, ensuring the images meet size and quality requirements can be a challenge, requiring additional preprocessing steps.
 
 7. **Scalability and Adaptability**: The app's modular architecture allows for easy expansion, making it adaptable for various use cases, such as education, entertainment, or creative writing tools.
+[🔼 Back to top](#idtop)
+<hr>
+---
 
-## Additional questions that surfaced
+## Additional Questions
 
 1.  **How can we improve the coherence of AI-generated stories?**
     
@@ -265,6 +292,9 @@ For the Mystic AI application, the application development steps involved prepar
 5.  **How scalable is the application?**
     
     -   As more users interact with the app, how can we ensure that API rate limits, server performance, and caching mechanisms can handle increased demand?
+[🔼 Back to top](#idtop)
+<hr>
+---
 
 ## Plan for Future Development
 
@@ -302,11 +332,16 @@ For the Mystic AI application, the application development steps involved prepar
     -   Conduct usability testing to refine the interface and improve the overall experience.
 
 By addressing these questions and implementing these plans, Mystic AI can evolve into a more robust, scalable, and engaging platform that continues to push the boundaries of AI-driven storytelling.
+[🔼 Back to top](#idtop)
+<hr>
+---
 
 ## Conclusion
 
 This project demonstrates the power of AI in transforming static stories into interactive experiences.
-
+[🔼 Back to top](#idtop)
+<hr>
+---
 
 
 ## References
@@ -316,3 +351,6 @@ This project demonstrates the power of AI in transforming static stories into in
 - [OpenAI API](https://platform.openai.com/docs/)
 
 - [DALL-E 3 API](https://help.openai.com/en/articles/8555480-dall-e-3-api)
+[🔼 Back to top](#idtop)
+<hr>
+---
