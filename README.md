@@ -12,10 +12,8 @@
 * [Usage Instructions](#Usage-Instructions)
 * [Demo and Slideshow](#Demo-and-Slideshow)
 * [Application Development](#Application-Development)
-* [Additional Explanations](#Additional-Explanations)
-* [Major Findings](#Major-Findings)
-* [Additional Questions](#Additional-Questions)
-* [Plan For Future Development](#Plan-For-Future-Development)
+* [Additional Explanations and Major Findings](#Additional-Explanations-and-Major-Findings)
+* [Additional Questions and Plan for future development](#Additional-Questions-and-Plan-for-future-development)
 * [Conclusion](#Conclusion)
 * [References](#References)
   
@@ -222,7 +220,9 @@ For the Mystic AI application, the application development steps involved prepar
 <hr>
 
 
-## Additional Explanations
+## Additional Explanations and Major Findings
+
+### Additional Explanations
 
 1. **AI Integration**: Mystic AI combines OpenAI's ChatGPT for natural language processing and storytelling with DALL-E for generating visually appealing images. This integration demonstrates how AI can work cohesively to create an immersive user experience.
 
@@ -238,7 +238,7 @@ For the Mystic AI application, the application development steps involved prepar
 <hr>
 
 
-## Major Findings
+### Major Findings
 
 1. **AI's Creative Potential**: The application demonstrates that AI can generate coherent, engaging, and contextually relevant stories and visuals, showcasing its potential in creative industries.
 
@@ -258,7 +258,9 @@ For the Mystic AI application, the application development steps involved prepar
 <hr>
 
 
-## Additional Questions
+## Additional Questions and Plan for future development
+
+### Additional Questions
 
 1.  **How can we improve the coherence of AI-generated stories?**
     
@@ -280,7 +282,7 @@ For the Mystic AI application, the application development steps involved prepar
 <hr>
 
 
-## Plan for Future Development
+### Plan for Future Development
 
 1.  **Enhance Story Coherence**:
     
