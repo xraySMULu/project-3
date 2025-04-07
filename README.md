@@ -29,7 +29,7 @@ Mystic AI is a Streamlit-based web application that creates an interactive story
 
 [🔼 Back to top](#idtop)
 <hr>
----
+
 
 ## Features
 1. **API Key Authentication**:
@@ -54,7 +54,7 @@ Mystic AI is a Streamlit-based web application that creates an interactive story
 
 [🔼 Back to top](#idtop)
 <hr>
----
+
 
 ## Purpose of Use
 
@@ -68,7 +68,7 @@ The tool is designed for:
 
 [🔼 Back to top](#idtop)
 <hr>
----
+
 
 ## File Navigation
 * Website
@@ -87,7 +87,7 @@ The tool is designed for:
 
 [🔼 Back to top](#idtop)
 <hr>
----
+
 
 ## How It Works
 1. **Setup**:
@@ -107,7 +107,7 @@ The tool is designed for:
 
 [🔼 Back to top](#idtop)
 <hr>
----
+
 
 ## Key Components
 1. **auth()**:
@@ -131,7 +131,7 @@ The tool is designed for:
 
 [🔼 Back to top](#idtop)
 <hr>
----
+
 
 ## Installation
 
@@ -155,7 +155,7 @@ pip install -r requirements.txt
 
 [🔼 Back to top](#idtop)
 <hr>
----
+
 
 ## Usage Instructions
 1. Run the main script:
@@ -174,7 +174,7 @@ streamlit run resources/website/app.py
 
 [🔼 Back to top](#idtop)
 <hr>
----
+
 
 ## Demo and Slideshow
 
@@ -199,7 +199,7 @@ streamlit run resources/website/app.py
 
 [🔼 Back to top](#idtop)
 <hr>
----  
+
 
 ## Application Development
 
@@ -246,7 +246,7 @@ For the Mystic AI application, the application development steps involved prepar
 
 [🔼 Back to top](#idtop)
 <hr>
----
+
 
 ## Additional Explanations
 
@@ -262,7 +262,7 @@ For the Mystic AI application, the application development steps involved prepar
 
 [🔼 Back to top](#idtop)
 <hr>
----
+
 
 ## Major Findings
 
@@ -282,7 +282,7 @@ For the Mystic AI application, the application development steps involved prepar
 
 [🔼 Back to top](#idtop)
 <hr>
----
+
 
 ## Additional Questions
 
@@ -304,7 +304,7 @@ For the Mystic AI application, the application development steps involved prepar
 
 [🔼 Back to top](#idtop)
 <hr>
----
+
 
 ## Plan for Future Development
 
@@ -345,7 +345,7 @@ By addressing these questions and implementing these plans, Mystic AI can evolve
 
 [🔼 Back to top](#idtop)
 <hr>
----
+
 
 ## Conclusion
 
@@ -353,7 +353,7 @@ This project demonstrates the power of AI in transforming static stories into in
 
 [🔼 Back to top](#idtop)
 <hr>
----
+
 
 
 ## References
@@ -366,4 +366,3 @@ This project demonstrates the power of AI in transforming static stories into in
 
 [🔼 Back to top](#idtop)
 <hr>
----
