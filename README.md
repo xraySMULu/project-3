@@ -145,13 +145,10 @@ streamlit run resources/website/app.py
 
 **Mystic AI - DALL-E Prints**
 
-![Warrior](Resources/content/warrior1.png)
-
-![Team Journey](Resources/content/team1.png)
-
-![Team Walk](Resources/content/team2.png)
-
-![Spooky Castle](Resources/content/spook1.png)
+![image](Resources/content/warrior1.png)
+![image](Resources/content/team1.png)
+![image](Resources/content/team2.png)
+![image](Resources/content/spook1.png)
 
 **Slideshow**
 
