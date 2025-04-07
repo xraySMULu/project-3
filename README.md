@@ -1,6 +1,6 @@
 # **Mystic Ai: Dynamic Story Creator**
 <a id="idtop"></a>  
-<img src="./resources/content/hdr.png" width="750">
+<img src="./resources/content/hdr.png" width="1200">
 
 ## Table of Contents
 * [Project Overview](#Project-Overview)
@@ -8,7 +8,6 @@
 * [Purpose of Use](#Purpose-of-Use)
 * [File Navigation](#File-Navigation)
 * [How It Works](#How-It-Works)
-* [Key Components](#Key-Components)
 * [Installation](#Installation)
 * [Usage Instructions](#Usage-Instructions)
 * [Demo and Slideshow](#Demo-and-Slideshow)
@@ -23,7 +22,7 @@
 
 ## Project Overview
 
-## Mystic AI - Interactive Storybook Application
+## Mystic AI - Dynamic Story Creator
 
 Mystic AI is a Streamlit-based web application that creates an interactive storybook experience using OpenAI's ChatGPT and DALL-E. Users can input a story genre or theme, and the app generates a dynamic story with accompanying images and user choices.
 
@@ -38,7 +37,7 @@ Mystic AI is a Streamlit-based web application that creates an interactive story
 
 2. **Dynamic Story Generation**:
    - Stories are generated using OpenAI's ChatGPT based on the user's input genre or theme.
-   - Each story section includes text, user choices, and optionally an AI-generated image.
+   - Each story section includes text, user choices, and an AI-generated image.
 
 3. **AI-Generated Images**:
    - DALL-E generates images based on prompts extracted from the story.
@@ -107,31 +106,6 @@ The tool is designed for:
 
 [🔼 Back to top](#idtop)
 <hr>
-
-
-## Key Components
-1. **auth()**:
-   - Authenticates the OpenAI API key and updates session state.
-
-2. **get_story_and_image()**:
-   - Generates story text, user options, and an AI-generated image.
-
-3. **get_output()**:
-   - Handles user input and updates the story dynamically.
-
-4. **generate_content()**:
-   - Renders each story section with text, choices, and images.
-
-5. **add_new_data()**:
-   - Adds new story sections to the session state.
-
-6. **Streamlit Widgets**:
-   - Sidebar for API key input and instructions.
-   - Main container for story input, clear/reset buttons, and story rendering.
-
-[🔼 Back to top](#idtop)
-<hr>
-
 
 ## Installation
 
