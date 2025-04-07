@@ -50,7 +50,8 @@ Mystic AI is a Streamlit-based web application that creates an interactive story
    - The app uses Streamlit's session state to manage user inputs, story sections, and app state.
 
 6. **Sidebar Configuration**:
-   - Includes instructions, API key input, and app information.  
+   - Includes instructions, API key input, and app information.
+
 [🔼 Back to top](#idtop)
 <hr>
 ---
@@ -64,6 +65,7 @@ The tool is designed for:
 - Educational purposes
 
 - AI-assisted narrative generation
+
 [🔼 Back to top](#idtop)
 <hr>
 ---
@@ -81,7 +83,8 @@ The tool is designed for:
 	-  [Resources/content](Resources/content) - Directory containing all of the image files used by the code
  	-  [Resources/data](Resources/data) - Directory containing all of the data files used by the code
  	-  [Resources/data](Resources/presentation) - Directory containing all of the presentation files used by the code 	
- 	-  `README.md`: This documentation 	
+ 	-  `README.md`: This documentation 
+
 [🔼 Back to top](#idtop)
 <hr>
 ---
@@ -101,6 +104,7 @@ The tool is designed for:
 
 4. **Dynamic Updates**:
    - The app dynamically updates the story sections and maintains state across interactions.
+
 [🔼 Back to top](#idtop)
 <hr>
 ---
@@ -124,6 +128,7 @@ The tool is designed for:
 6. **Streamlit Widgets**:
    - Sidebar for API key input and instructions.
    - Main container for story input, clear/reset buttons, and story rendering.
+
 [🔼 Back to top](#idtop)
 <hr>
 ---
@@ -147,6 +152,7 @@ git clone https://github.com/xraySMULu/project-3
 pip install -r requirements.txt
 
 ```
+
 [🔼 Back to top](#idtop)
 <hr>
 ---
@@ -165,6 +171,7 @@ streamlit run resources/website/app.py
 4. Click "Begin story" to start generating the story.
 5. Make choices at each story section to progress the story.
 6. Enjoy the interactive storytelling experience!
+
 [🔼 Back to top](#idtop)
 <hr>
 ---
@@ -252,6 +259,7 @@ For the Mystic AI application, the application development steps involved prepar
 4. **Error Handling**: The app includes mechanisms to validate user inputs (e.g., API key format) and handle potential API errors gracefully, ensuring reliability and usability.
 
 5. **Scalability**: The modular design of the application allows for future enhancements, such as integrating additional AI models, expanding storytelling capabilities, or supporting more complex user interactions.
+
 [🔼 Back to top](#idtop)
 <hr>
 ---
@@ -271,6 +279,7 @@ For the Mystic AI application, the application development steps involved prepar
 6. **Challenges in Image Generation**: While DALL-E generates impressive visuals, ensuring the images meet size and quality requirements can be a challenge, requiring additional preprocessing steps.
 
 7. **Scalability and Adaptability**: The app's modular architecture allows for easy expansion, making it adaptable for various use cases, such as education, entertainment, or creative writing tools.
+
 [🔼 Back to top](#idtop)
 <hr>
 ---
@@ -292,6 +301,7 @@ For the Mystic AI application, the application development steps involved prepar
 5.  **How scalable is the application?**
     
     -   As more users interact with the app, how can we ensure that API rate limits, server performance, and caching mechanisms can handle increased demand?
+
 [🔼 Back to top](#idtop)
 <hr>
 ---
@@ -332,6 +342,7 @@ For the Mystic AI application, the application development steps involved prepar
     -   Conduct usability testing to refine the interface and improve the overall experience.
 
 By addressing these questions and implementing these plans, Mystic AI can evolve into a more robust, scalable, and engaging platform that continues to push the boundaries of AI-driven storytelling.
+
 [🔼 Back to top](#idtop)
 <hr>
 ---
@@ -339,6 +350,7 @@ By addressing these questions and implementing these plans, Mystic AI can evolve
 ## Conclusion
 
 This project demonstrates the power of AI in transforming static stories into interactive experiences.
+
 [🔼 Back to top](#idtop)
 <hr>
 ---
@@ -351,6 +363,7 @@ This project demonstrates the power of AI in transforming static stories into in
 - [OpenAI API](https://platform.openai.com/docs/)
 
 - [DALL-E 3 API](https://help.openai.com/en/articles/8555480-dall-e-3-api)
+
 [🔼 Back to top](#idtop)
 <hr>
 ---
