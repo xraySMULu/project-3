@@ -1,18 +1,35 @@
-# **Project 3 Team 2 - Mystic AI**
+# **Mystic Ai: Dynamic Story Creator**
+<a id="idtop"></a>  
+<img src="./resources/content/hdr.png" width="750">
 
-# AI Story Creator & Adventure Generator
-
+## Table of Contents
+* [Project Overview](#overview)
+* [Features](#features)
+* [Purpose of Use](#purpose)
+* [File Navigation](#filenav)
+* [How It Works](#howit)
+* [Key Components](#keycomp)
+* [Installation](#installation)
+* [Usage Instructions](#usage)
+* [Demo and Slideshow](#demos)
+* [Application Development](#appdev)
+* [Additional Explanations](#addex)
+* [Major Findings](#majfind)
+* [Additional questions that surfaced](#addques)
+* [Plan For Future Development](#plan)
+* [Conclusion](#conclusion)
+* [References](#references)
   
 
 ## Project Overview
 
-### Mystic AI - Interactive Storybook Application
+## Mystic AI - Interactive Storybook Application
 
 Mystic AI is a Streamlit-based web application that creates an interactive storybook experience using OpenAI's ChatGPT and DALL-E. Users can input a story genre or theme, and the app generates a dynamic story with accompanying images and user choices.
 
 ---
 
-### Features
+## Features
 1. **API Key Authentication**:
    - Users must provide their OpenAI API key to access the app's features.
    - The key is securely stored in the session state.
@@ -34,7 +51,7 @@ Mystic AI is a Streamlit-based web application that creates an interactive story
    - Includes instructions, API key input, and app information.  
 ---
 
-### Purpose of Use
+## Purpose of Use
 
 The tool is designed for:
 
@@ -45,7 +62,7 @@ The tool is designed for:
 - AI-assisted narrative generation
 ---
 
-### File Navigation
+## File Navigation
 * Website
    -  [Resources/website](Resources/website) - Directory containing all of the website files used by the code
 	-  `resources/website/app.py`: Entry point for the web application		
@@ -61,7 +78,7 @@ The tool is designed for:
  	-  `README.md`: This documentation 	
  ---
 
-### How It Works
+## How It Works
 1. **Setup**:
    - Users enter their OpenAI API key in the sidebar to authenticate.
    - They input a story genre or theme to begin.
@@ -78,7 +95,7 @@ The tool is designed for:
    - The app dynamically updates the story sections and maintains state across interactions.
 ---
 
-### Key Components
+## Key Components
 1. **auth()**:
    - Authenticates the OpenAI API key and updates session state.
 
@@ -99,7 +116,7 @@ The tool is designed for:
    - Main container for story input, clear/reset buttons, and story rendering.
 ---
 
-### Installation
+## Installation
 
 1. Clone the repository:
 
@@ -119,7 +136,7 @@ pip install -r requirements.txt
 
 ```
 
-### Usage Instructions
+## Usage Instructions
 1. Run the main script:
 	
 
@@ -135,7 +152,7 @@ streamlit run resources/website/app.py
 6. Enjoy the interactive storytelling experience!
  ---
 
-### Demo & Slideshow
+## Demo and Slideshow
 
 **Mystic AI Demo**
 
@@ -158,9 +175,9 @@ streamlit run resources/website/app.py
 
 ---  
 
-### Data Pre-processing and Gathering Steps
+## Application Development
 
-For the Mystic AI application, the data and preprocessing steps involve preparing user inputs, managing API responses, and ensuring the generated content is suitable for display. Below is an outline of the data and preprocessing steps:
+For the Mystic AI application, the application development steps involved preparing model prompt, user inputs, managing API responses, and ensuring the generated content is suitable for display. Below is an outline of the data and preprocessing steps:
 
 1. **User Input Handling**:
    - **Input**: Users provide a story genre or theme and their OpenAI API key.
@@ -177,7 +194,7 @@ For the Mystic AI application, the data and preprocessing steps involve preparin
    - **Response Parsing**:
      - Split the response into lines and filter out empty lines or separators (e.g., `-- -- --`).
      - Identify and separate the story text, user choice labels, and options.
-     - Ensure options are limited to a maximum of 4 for better user experience.
+     - Ensure options are limited to a maximum of 6 for better user experience.
 
 4. **Image Prompt Extraction**:
    - Extract the image prompt from the ChatGPT response (if present).
@@ -203,8 +220,7 @@ For the Mystic AI application, the data and preprocessing steps involve preparin
 
 ---
 
-### Additional Explanations and Major Findings
-### Additional Explanations
+## Additional Explanations
 
 1. **AI Integration**: Mystic AI combines OpenAI's ChatGPT for natural language processing and storytelling with DALL-E for generating visually appealing images. This integration demonstrates how AI can work cohesively to create an immersive user experience.
 
@@ -216,9 +232,7 @@ For the Mystic AI application, the data and preprocessing steps involve preparin
 
 5. **Scalability**: The modular design of the application allows for future enhancements, such as integrating additional AI models, expanding storytelling capabilities, or supporting more complex user interactions.
 
----
-
-### Major Findings
+## Major Findings
 
 1. **AI's Creative Potential**: The application demonstrates that AI can generate coherent, engaging, and contextually relevant stories and visuals, showcasing its potential in creative industries.
 
@@ -234,8 +248,7 @@ For the Mystic AI application, the data and preprocessing steps involve preparin
 
 7. **Scalability and Adaptability**: The app's modular architecture allows for easy expansion, making it adaptable for various use cases, such as education, entertainment, or creative writing tools.
 
-### Additional questions that surfaced and plan for future development
-### Additional Questions That Surfaced
+## Additional questions that surfaced
 
 1.  **How can we improve the coherence of AI-generated stories?**
     
@@ -252,7 +265,8 @@ For the Mystic AI application, the data and preprocessing steps involve preparin
 5.  **How scalable is the application?**
     
     -   As more users interact with the app, how can we ensure that API rate limits, server performance, and caching mechanisms can handle increased demand?
-### Plan for Future Development
+
+## Plan for Future Development
 
 1.  **Enhance Story Coherence**:
     
@@ -289,16 +303,16 @@ For the Mystic AI application, the data and preprocessing steps involve preparin
 
 By addressing these questions and implementing these plans, Mystic AI can evolve into a more robust, scalable, and engaging platform that continues to push the boundaries of AI-driven storytelling.
 
-### Conclusion and References
+## Conclusion
 
 This project demonstrates the power of AI in transforming static stories into interactive experiences.
 
-  
 
-### References
+
+## References
 
 - [LangChain Documentation](https://python.langchain.com/)
 
 - [OpenAI API](https://platform.openai.com/docs/)
 
-- [Pinecone Documentation](https://www.pinecone.io/)
+- [DALL-E 3 API](https://help.openai.com/en/articles/8555480-dall-e-3-api)
