@@ -4,11 +4,7 @@ from PIL import Image
 import requests
 import warnings
 from io import BytesIO
-import json
-from stability_sdk import client 
-import stability_sdk.interfaces.gooseai.generation.generation_pb2 as generation 
-
-
+warnings.filterwarnings("ignore", category=UserWarning, module='PIL')
 def setup_dalle(apikey):
     """
     Sets up the OpenAI API for DALL-E image generation.
@@ -21,7 +17,7 @@ def setup_dalle(apikey):
     print("DALL-E setup complete.")
     return openai_client
 
-def create_dalle_image(api_client,prompt,dimensions: tuple):
+def create_dalle_image(api_client,prompt):
     """
     Generates an image from a given prompt using DALL-E.
     
@@ -31,12 +27,19 @@ def create_dalle_image(api_client,prompt,dimensions: tuple):
     Returns:
     str: URL of the generated image.
     """
-    response = api_client.images.generate(
+    try:
+    # Code that uses the Streamlit component
+     response = api_client.images.generate(
             model="dall-e-3",
             prompt=prompt,   
             n=1,    
             quality="standard"    
             )  
+    except Exception as e:
+        # Handle the exception
+        print("An error occurred:", e)
+        st.error("Error: An error has occured.")
+        return None
    
     image_url = response.data[0].url
     response = requests.get(image_url)

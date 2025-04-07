@@ -21,6 +21,22 @@ response = openai.ChatCompletion.create(
     stop=None
 )
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 model_id = response['id']
 print(f"Model ID: {model_id}")
 # Save the fine-tuned model
