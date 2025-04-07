@@ -141,20 +141,20 @@ streamlit run resources/website/app.py
 
 * Mystic AI Demo
 
-* Navigate to [Demo](Resources/content/ui_demo.gif)
+* Navigate to [Demo](resources/content/ui_demo.gif)
 
 **Mystic AI - DALL-E Prints**
 
-![image](Resources/content/warrior1.png)
-![image](Resources/content/team1.png)
-![image](Resources/content/team2.png)
-![image](Resources/content/spook1.png)
+![image](resources/content/warrior1.png)
+![image](resources/content/team1.png)
+![image](resources/content/team2.png)
+![image](resources/content/spook1.png)
 
 **Slideshow**
 
 * Project #3 - Team #2 - Slideshow
 
-* Navigate to [Slideshow PDF](Resources/presentation/proj3slideshow.pdf)
+* Navigate to [Slideshow PDF](resources/presentation/proj3slideshow.pdf)
 
 ---  
 
