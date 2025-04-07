@@ -137,12 +137,21 @@ streamlit run resources/website/app.py
 
 ### Demo & Slideshow
 
-**Demo**
+**Mystic AI Demo**
 
 * Mystic AI Demo
 
-* Navigate to [Demo](Resources/content/mai_demo.gif)
+* Navigate to [Demo](Resources/content/ui_demo.gif)
 
+**Mystic AI - DALL-E Prints**
+
+![Warrior](Resources/content/warrior1.png)
+
+![Team Journey](Resources/content/team1.png)
+
+![Team Walk](Resources/content/team2.png)
+
+![Spooky Castle](Resources/content/spook1.png)
 
 **Slideshow**
 
