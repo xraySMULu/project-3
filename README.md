@@ -5,13 +5,13 @@
 ## Table of Contents
 * [Project Overview](#Project-Overview)
 * [Features](#Features)
-* [Purpose of Use](#Purpose-of-Use)
 * [File Navigation](#File-Navigation)
 * [How It Works](#How-It-Works)
 * [Installation](#Installation)
 * [Usage Instructions](#Usage-Instructions)
 * [Demo and Slideshow](#Demo-and-Slideshow)
 * [Application Development](#Application-Development)
+* [Performance Optimization](#Performance-Optimization)
 * [Additional Explanations and Major Findings](#Additional-Explanations-and-Major-Findings)
 * [Additional Questions and Plan for future development](#Additional-Questions-and-Plan-for-future-development)
 * [Conclusion](#Conclusion)
@@ -51,21 +51,6 @@ Mystic AI is a Streamlit-based web application that creates an interactive story
 
 [🔼 Back to top](#idtop)
 <hr>
-
-
-## Purpose of Use
-
-The tool is designed for:
-
-- Interactive storytelling
-
-- Educational purposes
-
-- AI-assisted narrative generation
-
-[🔼 Back to top](#idtop)
-<hr>
-
 
 ## File Navigation
 * Website
@@ -218,6 +203,41 @@ For the Mystic AI application, the application development steps involved prepar
 
 [🔼 Back to top](#idtop)
 <hr>
+
+## Performance Optimization
+
+**Baseline Performance:**
+- Prompt passed directly from GPT: Initially, the prompt was used as-is, directly from GPT without any modifications or cleanup. No cleanup: The prompt contained various formatting issues such as newline (\n) and carriage return (\r) characters, as well as unnecessary prefixes.
+- Response Time Results
+   - ![image](resources/content/perf_bl1.png)
+   - ![image](resources/content/perf_bl2.png)
+**Prompt Cleanup:**
+- Prompt Cleanup:
+   - Implemented prompt cleanup code: To enhance performance, we developed code that systematically cleans up the given prompt. This involves:
+      - Removing newline (\n) and carriage return (\r) characters: These characters were eliminated to ensure the prompt is a single, continuous string.
+      - Iteratively removing specific prefixes: The code removes a predefined set of prefixes that are often unnecessary and can clutter the prompt.
+        ```bash
+        
+            prompt = prompt.replace("\n", " ").replace("\r", " ")
+            for prefix in ["Prompt:", "Visual Prompt:", "Image Prompt:", "A.", "B.", "C.", "D.", "E.", "F.", "A)", "B)", "C)", "D)", "E)", "F)"]:
+            prompt = prompt.replace(prefix, "")
+        ``` 
+      - This cleanup process results in a more streamlined and efficient prompt, which can be processed more effectively by the tool.
+   - Simplifying prompt requests to DALL-E: To further optimize performance, we added a developer-recommended sentence that simplifies the prompt request. This sentence instructs the tool to use the prompt as-is without adding any additional details. The sentence is:
+   ```bash
+
+      "I NEED to test how the tool works with extremely simple prompts. DO NOT add any detail, just use it AS-IS:" + prompt
+   ``` 
+   - By including this sentence, we ensure that the tool processes the prompt in its simplest form, which can lead to more accurate and faster results.
+   - Response Time Results
+      - ![image](resources/content/perf_imp1.png)
+      - ![image](resources/content/perf_imp2.png)
+      - ![image](resources/content/perf_imp3.png)
+      - ![image](resources/content/perf_imp4.png)
+**Performance Results**
+- Baseline Response Time: 14.84 seconds
+- Post-Modification Response Time: 9.73 seconds
+- Improvement: 34.43%
 
 
 ## Additional Explanations and Major Findings

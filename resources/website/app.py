@@ -6,9 +6,12 @@ from time import sleep
 from streamlit_extras.app_logo import add_logo
 from streamlit.components.v1 import html
 from streamlit.delta_generator import DeltaGenerator
+import time
+import contextlib
 
 from llm_init import initialize_model  # Custom module for initializing the language model
 from img_gen import *  # Custom module for image generation
+from util import *  # Custom module for utility functions
 
 # Function to authenticate API key and update session states
 def auth():    
@@ -85,23 +88,36 @@ if not openai_key.startswith('sk-'):
 def get_story_and_image(user_resp):
     # Initialize the language model and DALL-E client
     llm_model = initialize_model()
-    openai_client = setup_dalle(st.session_state.openai_api_key)
         
+    openai_client = setup_dalle(st.session_state.openai_api_key)
+    
+    # Timer for the story generation
+    gpt_start_time = time.perf_counter()  # Start the timer     
     # Generate a response from the language model
     bot_response = llm_model.predict(input=user_resp)
     print(bot_response)
     response_list = bot_response.split("\n")
-    
+    gpt_end_time = time.perf_counter()  # end the timer
+    gpt_elasped_time = gpt_end_time - gpt_start_time  # Calculate elapsed time  
+    st.info(f"GPT Response time: {gpt_elasped_time} seconds")  # Display response time
+    print(f"GPT Response time: {gpt_elasped_time} seconds")
+
     # Filter out empty lines and separators from the response
     responses = list(filter(lambda x: x != '' and x != '-- -- --', response_list))
     
+    # Timer for the DALL-E image generation
+    dalle_start_time = time.perf_counter()  # Start the timer      
     # Generate an image using DALL-E if the response contains an image prompt
     if len(response_list) != 1:
         img_prompt = response_list[-1]
         dalle_img = create_dalle_image(openai_client, img_prompt)        
     else:
         dalle_img = None
-        
+    
+    dalle_end_time = time.perf_counter()  # end the timer
+    dalle_elasped_time = dalle_end_time - dalle_start_time  # Calculate elapsed time  
+    st.info(f"DALLE Response Time: {dalle_elasped_time} seconds")  # Display response time
+    print(f"DALLE Response Time: {dalle_elasped_time} seconds")
     # Remove unwanted lines related to image generation from the response
     responses = list(filter(lambda x: 'DALL-E' not in x and 'Image prompt' not in x, responses))
     
@@ -123,14 +139,6 @@ def get_story_and_image(user_resp):
         except IndexError:
             print(f"IndexError: The response '{response}' is too short to check the specified index.")
             st.switch_page('app.py')  # Navigate to an error page if the response is too short
-
-
-        # if response.startswith('What') or response.startswith('Which') or response.startswith('Choose'):
-        #     label = '**' + response + '**'
-        # elif response[1] == '.' or response[1] == ')' or response[1:6] == ' --' or response.startswith('Option'):
-        #     opts.append(response) 
-        # else:
-        #     story += response + '\n'  # Append to the story text    
     
     # Return the parsed story, label, options, and generated image
     if not story:
@@ -152,84 +160,6 @@ def get_story_and_image(user_resp):
         'Options': opts,
         'Image': dalle_img
     }
-
-
-def trim_lst(lst):
-    
-    # Initialize an empty list to store the ordered options
-    opts_rtn = []
-    opts_ordered_1 = []
-    opts_ordered_2 = []
-       
-    # Iterate through the responses and keep only the first 6 values corresponding to A) to F)
-    for op in lst:
-        if op.startswith(('A)', 'B)', 'C)', 'D)', 'E)', 'F)')):
-            opts_ordered_1.append(op)
-        if len(opts_ordered_1) == 6:
-            break
-        elif op.startswith(('A.', 'B.', 'C.', 'D.', 'E.', 'F.')):
-            opts_ordered_2.append(op)
-        if len(opts_ordered_2) == 6:
-            break    
-    # Sort the options based on the desired order
-    opts_rtn = sort_lst(opts_ordered_1, opts_ordered_2)
-
-    return opts_rtn
-
-def ensure_lst_values(lst):
-    required_values = ['A', 'B', 'C', 'D', 'E', 'F']
-    default_value = "Think about what you want to do next."
-
-    # Create a set of the first characters in the list
-    existing_values = {item[0] for item in lst}
-
-    # Check for missing values and add them with the default value
-    for value in required_values:
-        if value not in existing_values:
-            lst.append(f"{value}) {default_value}")
-    
-    # Sort the list based on the desired order
-    lst = sort_lst_by_char1(lst)
-    # Return the updated list
-    return lst
-
-def sort_lst_by_char1(lst):
-    lst_rtn = []
-    # Define the desired order
-    desired_order = ['A', 'B', 'C', 'D', 'E', 'F']
-    
-    # Filter and sort the ops based on the desired order
-    opts1 = sorted(
-        [op for op in lst if op[:1] in desired_order],
-        key=lambda x: desired_order.index(x[:1])
-    )
-
-    if len(opts1) == 6:
-        lst_rtn = opts1
-    
-    return lst_rtn
-
-def sort_lst(lst1,lst2):
-    lst_rtn = []
-    # Define the desired order
-    desired_order_1 = ['A)', 'B)', 'C)', 'D)', 'E)', 'F)']
-    desired_order_2 = ['A.', 'B.', 'C.', 'D.', 'E.', 'F.']
-
-    # Filter and sort the ops based on the desired order
-    opts1 = sorted(
-        [op for op in lst1 if op[:2] in desired_order_1],
-        key=lambda x: desired_order_1.index(x[:2])
-    )       
-    opts2 = sorted(
-        [op for op in lst2 if op[:2] in desired_order_2],
-        key=lambda x: desired_order_2.index(x[:2])
-    )
-
-    if len(opts1) == 6:
-        lst_rtn = opts1
-    elif len(opts2) == 6:   
-        lst_rtn = opts2
-    return lst_rtn
 
 @st.cache_data(show_spinner='Generating your story...')
 # Function to handle user input, generate story content, and update session state

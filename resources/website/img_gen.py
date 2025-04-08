@@ -17,6 +17,12 @@ def setup_dalle(apikey):
     print("DALL-E setup complete.")
     return openai_client
 
+def get_first_sentence(text):
+    # Split the text by period
+    sentences = text.split('.')
+    # Return the first sentence with a period at the end
+    return sentences[0] + '.'
+
 def create_dalle_image(api_client,prompt):
     """
     Generates an image from a given prompt using DALL-E.
@@ -27,9 +33,15 @@ def create_dalle_image(api_client,prompt):
     Returns:
     str: URL of the generated image.
     """
+    #clean up the prompt
+    prompt = prompt.replace("\n", " ").replace("\r", " ")
+    for prefix in ["Prompt:", "Visual Prompt:", "Image Prompt:", "A.", "B.", "C.", "D.", "E.", "F.", "A)", "B)", "C)", "D)", "E)", "F)"]:
+        prompt = prompt.replace(prefix, "")
+    prompt = "I NEED to test how the tool works with extremely simple prompts. DO NOT add any detail, just use it AS-IS: " + prompt 
+        
     try:
     # Code that uses the Streamlit component
-     response = api_client.images.generate(
+        response = api_client.images.generate(
             model="dall-e-3",
             prompt=prompt,   
             n=1,    
