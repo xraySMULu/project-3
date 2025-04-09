@@ -4,8 +4,8 @@
 
 ## Table of Contents
 * [Project Overview](#Project-Overview)
-* [Features](#Features)
 * [File Navigation](#File-Navigation)
+* [Features](#Features)
 * [How It Works](#How-It-Works)
 * [Installation](#Installation)
 * [Usage Instructions](#Usage-Instructions)
@@ -22,7 +22,25 @@
 
 ## Mystic AI - Dynamic Story Creator
 
-Mystic AI is a Streamlit-based web application that creates an interactive storybook experience using OpenAI's ChatGPT and DALL-E. Users can input a story genre or theme, and the app generates a dynamic story with accompanying images and user choices.
+Mystic AI is a dynamic story experience using OpenAI's ChatGPT and DALL-E. Users can input a story genre or theme, and the app generates a dynamic story with accompanying images and user choices.
+
+[🔼 Back to top](#idtop)
+<hr>
+
+## File Navigation
+* Website
+   -  [Resources/website](Resources/website) - Directory containing all of the website files used by the code
+	-  `resources/website/app.py`: Entry point for the web application		
+	-  `resources/website/llm_init.py`: OpenAI LLM initialization and prompt handling
+	-  `resources/website/img_gen.py`: DALL-E 3 Image generation helper
+	-  `resources/website/requirements.txt`: dependencies for the UI
+	-  `resources/website/icons`: images for the UI
+
+* Project
+	-  [Resources/content](Resources/content) - Directory containing all of the image files used by the code
+ 	-  [Resources/data](Resources/data) - Directory containing all of the data files used by the code
+ 	-  [Resources/data](Resources/presentation) - Directory containing all of the presentation files used by the code 	
+ 	-  `README.md`: This documentation 
 
 [🔼 Back to top](#idtop)
 <hr>
@@ -46,25 +64,6 @@ Mystic AI is a Streamlit-based web application that creates an interactive story
 
 [🔼 Back to top](#idtop)
 <hr>
-
-## File Navigation
-* Website
-   -  [Resources/website](Resources/website) - Directory containing all of the website files used by the code
-	-  `resources/website/app.py`: Entry point for the web application		
-	-  `resources/website/llm_init.py`: OpenAI LLM initialization and prompt handling
-	-  `resources/website/img_gen.py`: DALL-E 3 Image generation helper
-	-  `resources/website/requirements.txt`: dependencies for the UI
-	-  `resources/website/icons`: images for the UI
-
-* Project
-	-  [Resources/content](Resources/content) - Directory containing all of the image files used by the code
- 	-  [Resources/data](Resources/data) - Directory containing all of the data files used by the code
- 	-  [Resources/data](Resources/presentation) - Directory containing all of the presentation files used by the code 	
- 	-  `README.md`: This documentation 
-
-[🔼 Back to top](#idtop)
-<hr>
-
 
 ## How It Works
 1. **Setup**:
@@ -132,9 +131,11 @@ streamlit run resources/website/app.py
 
 **Mystic AI Demo**
 
-* Mystic AI Demo
-
 * Navigate to [Demo](resources/content/ui_demo.gif)
+
+**Mystic AI Slideshow**
+* Navigate to [Slideshow PDF](resources/presentation/Mystic-AI.pdf)
+* Navigate to [Slideshow Powerpoint](resources/presentation/Mystic-AI_pp.pptx)
 
 **Mystic AI - DALL-E Prints**
 
@@ -143,11 +144,6 @@ streamlit run resources/website/app.py
 ![image](resources/content/team2.png)
 ![image](resources/content/spook1.png)
 
-**Slideshow**
-
-* Project #3 - Team #2 - Slideshow
-
-* Navigate to [Slideshow PDF](resources/presentation/proj3slideshow.pdf)
 
 [🔼 Back to top](#idtop)
 <hr>
@@ -195,6 +191,8 @@ For the Mystic AI application, the application development steps involved prepar
 ## Performance Optimization - 
 
 ### DALL-E 3 Image Model
+**Information**
+-
 **Baseline Performance:**
 - Prompt passed directly from GPT: Initially, the prompt was used as-is, directly from GPT without any modifications or cleanup. No cleanup: The DALLE prompt contained various formatting issues such as newline (\n) and carriage return (\r) characters, as well as unnecessary prefixes.
 - Response Time Results
