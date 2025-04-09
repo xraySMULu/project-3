@@ -29,12 +29,12 @@ Mystic AI is a dynamic story experience using OpenAI's ChatGPT and DALL-E. Users
 
 ## File Navigation
 * Website
-   -  [Resources/website](Resources/website) - Directory containing all of the website files used by the code
-	-  `resources/website/app.py`: Entry point for the web application		
-	-  `resources/website/llm_init.py`: OpenAI LLM initialization and prompt handling
-	-  `resources/website/img_gen.py`: DALL-E 3 Image generation helper
-	-  `resources/website/requirements.txt`: dependencies for the UI
-	-  `resources/website/icons`: images for the UI
+   -  [resources/website](resources/website) - Directory containing all of the website files used by the code
+	-  [resources/website/app.py](resources/website/app.py): Entry point for the web application		
+	-  [resources/website/llm_init.py](resources/website/llm_init.py): OpenAI LLM initialization and prompt handling
+	-  [resources/website/img_gen.py](resources/website/img_gen.py): DALL-E 3 Image generation helper
+	-  [resources/website/requirements.txt](resources/website/requirements.txt): dependencies for the UI
+	-  [resources/website/icons](resources/website/icons): images for the UI
 
 * Project
 	-  [Resources/content](Resources/content) - Directory containing all of the image files used by the code
