@@ -6,13 +6,24 @@ from time import sleep
 from streamlit_extras.app_logo import add_logo
 from streamlit.components.v1 import html
 from streamlit.delta_generator import DeltaGenerator
+from langchain.chains.summarize import load_summarize_chain
+from langchain.schema import Document
+from langchain_openai import ChatOpenAI
+from langchain.chains.combine_documents import create_stuff_documents_chain
+from langchain.chains.llm import LLMChain
+from langchain_core.prompts import ChatPromptTemplate
+
+import validators
 import time
 import contextlib
 
-from llm_init import initialize_model  # Custom module for initializing the language model
+from llm_init import *  # Custom module for initializing the language model
 from img_gen import *  # Custom module for image generation
 from util import *  # Custom module for utility functions
 
+#global variables
+my_story_string = ''
+scrubbed_resp = ''
 # Function to authenticate API key and update session states
 def auth():    
     os.environ['OPENAI_API_KEY'] = st.session_state.openai_api_key  # Set OpenAI API key
@@ -35,6 +46,8 @@ st.set_page_config(
 st.title(f"Mystic AI")  # Display app title
 
 # Initialize session state variables if not already set
+if "llm" not in st.session_state:
+    st.session_state.llm = None
 if 'cols' not in st.session_state:  # Stores story sections
     st.session_state['cols'] = []
 if 'keep_graphics' not in st.session_state:  # Toggle for keeping graphics
@@ -86,6 +99,8 @@ if not openai_key.startswith('sk-'):
 
 # Defining the functions for the actual screen
 def get_story_and_image(user_resp):
+    global scrubbed_resp
+    scrubbed_resp = ''
     # Initialize the language model and DALL-E client
     llm_model = initialize_model()
         
@@ -98,9 +113,9 @@ def get_story_and_image(user_resp):
     print(bot_response)
     response_list = bot_response.split("\n")
     gpt_end_time = time.perf_counter()  # end the timer
-    gpt_elasped_time = gpt_end_time - gpt_start_time  # Calculate elapsed time  
-    st.info(f"GPT Response time: {gpt_elasped_time} seconds")  # Display response time
-    print(f"GPT Response time: {gpt_elasped_time} seconds")
+    gpt_elasped_time = gpt_end_time - gpt_start_time  # Calculate elapsed time    
+    # Display the response time in the console
+    print(f"GPT Response time: {gpt_elasped_time:2f} seconds")
 
     # Filter out empty lines and separators from the response
     responses = list(filter(lambda x: x != '' and x != '-- -- --', response_list))
@@ -115,9 +130,9 @@ def get_story_and_image(user_resp):
         dalle_img = None
     
     dalle_end_time = time.perf_counter()  # end the timer
-    dalle_elasped_time = dalle_end_time - dalle_start_time  # Calculate elapsed time  
-    st.info(f"DALLE Response Time: {dalle_elasped_time} seconds")  # Display response time
-    print(f"DALLE Response Time: {dalle_elasped_time} seconds")
+    dalle_elasped_time = dalle_end_time - dalle_start_time  # Calculate elapsed time     
+    print(f"DALLE Response Time: {dalle_elasped_time:2f} seconds")
+
     # Remove unwanted lines related to image generation from the response
     responses = list(filter(lambda x: 'DALL-E' not in x and 'Image prompt' not in x, responses))
     
@@ -135,7 +150,12 @@ def get_story_and_image(user_resp):
             elif response[1:2] in {'.', ')'} or response[1:6] == ' --' or response.startswith('Option'):
                 opts.append(response)
             else:
-                story += f'{response}\n'
+                #clean up the response
+                scrubbed_resp = response
+                scrubbed_resp = scrubbed_resp.replace("\n", " ").replace("\r", " ")
+                for prefix in ["Prompt:", "Visual Prompt:", "Image Prompt:", "Image", "Provide an image prompt:", "Instructions:","-- ", "--", "A.", "B.", "C.", "D.", "E.", "F.", "A)", "B)", "C)", "D)", "E)", "F)"]:
+                    scrubbed_resp = scrubbed_resp.replace(prefix, "")               
+                story += f'{scrubbed_resp}\n'
         except IndexError:
             print(f"IndexError: The response '{response}' is too short to check the specified index.")
             st.switch_page('app.py')  # Navigate to an error page if the response is too short
@@ -143,10 +163,10 @@ def get_story_and_image(user_resp):
     # Return the parsed story, label, options, and generated image
     if not story:
         story = 'This fantasy story is about embarking on an epic quest. The hero must make crucial decisions that will shape their destiny and the fate of the realm.'  # Default story if none is provided
-
-    if not label:
-        label = '**What will you choose?**'
     
+    if not label:
+        label = f'**What would you like to do next?**'  # Default label if none is provided    
+
     # Check if the number of options exceeds 6
     if len(opts) > 6:        
         opts = trim_lst(opts)  # Validate the options list
@@ -185,6 +205,15 @@ def get_output(_pos: DeltaGenerator, el_id='', genre=''):
     
     
 def generate_content(story, lbl_text, opts: list, img, el_id):   
+ 
+    global my_story_string
+    my_story_string = ''
+    prompt_template = """
+    Create a story title. For each section, make a title and a concise paragraph:
+    Context:{text}
+    """
+    prompt = PromptTemplate(template=prompt_template, input_variables=["text"])   
+
     if f'expanded_{el_id}' not in st.session_state:
         st.session_state[f'expanded_{el_id}'] = True
     if f'radio_{el_id}_disabled' not in st.session_state:
@@ -203,12 +232,37 @@ def generate_content(story, lbl_text, opts: list, img, el_id):
         st.write(story)        
         if lbl_text and opts:
             with st.form(key=f'user_choice_{el_id}'): 
-                st.radio(lbl_text, opts, disabled=st.session_state[f'radio_{el_id}_disabled'], key=f'radio_{el_id}')
+                st.radio(lbl_text, opts, disabled=st.session_state[f'radio_{el_id}_disabled'], key=f'radio_{el_id}')                
                 st.form_submit_button(
                     label="Let's do this!", 
                     disabled=st.session_state[f'submit_{el_id}_disabled'], 
                     on_click=get_output, args=[empty], kwargs={'el_id': el_id}
                 )
+            if st.button("Summarize Story", key=f'summarize_{el_id}'):  # Button to summarize the story        
+                try:
+                    with st.spinner("Fetching and summarizing story..."):                       
+                        llm = ChatOpenAI(model="gpt-4o-mini")                                                
+                        
+                        dd_story ={}
+                        dd_story = st.session_state['data_dict']
+                        lst_cols=[]
+                        lst_cols= st.session_state['cols']    
+                        #iterate data dict, passing part id, returning story to build out page summary
+                        for cls in lst_cols:
+                            story_obj = dd_story[cls]
+                            my_story_string += story_obj[0] + '\n'                      
+                        
+                        text = my_story_string
+                        # Create a document object for summarization
+                        document = Document(page_content=text)
+
+                        # Chain for summarization using the defined prompt template
+                        chain = load_summarize_chain(llm, chain_type="stuff", prompt=prompt)
+                        result = chain.invoke({"input_documents": [document]})
+                        output_summary = result.get("output_text", "No summary available.")
+                        st.success(output_summary)
+                except Exception as e:
+                    st.exception(f"Exception: {e}")
 
 
 def add_new_data(*data):   
@@ -224,9 +278,9 @@ with st.container():
     
     # Text input for entering the story theme/genre
     col_1.text_input(
-        label='Enter the theme/genre of your story',
+        label='Enter the theme of your story',
         key='genre_input',
-        placeholder='Enter the theme/genre of the story', 
+        placeholder='Enter the theme of the story', 
         disabled=st.session_state.genreBox_state
     )
     

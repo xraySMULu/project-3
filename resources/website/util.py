@@ -2,6 +2,7 @@ import streamlit as st
 from openai import OpenAI
 from PIL import Image
 from io import BytesIO
+import random
 
 def trim_lst(lst):
     
@@ -27,13 +28,36 @@ def trim_lst(lst):
 
 def ensure_lst_values(lst):
     required_values = ['A', 'B', 'C', 'D', 'E', 'F']
-    default_value = "Think about what you want to do next."
+    #default_value = "Think about what you want to do next."
+
+     #used for the default label
+    # If no label is provided by AI, use a random fantasy prompt
+    fantasy_prompts = [
+    "Discover the hidden forest of secrets.",
+    "Seek the ancient artifact of power.",
+    "Unravel the mystery of the lost city.",
+    "Find the enchanted river of dreams.",
+    "Explore the haunted castle on the hill.",
+    "Journey to the land of forgotten magic.",
+    "Unearth the buried treasure of legends.",
+    "Follow the path of the wandering stars.",
+    "Unlock the door to the shadow realm.",
+    "Venture into the cave of whispers.",
+    "Cross the bridge to the unknown lands.",
+    "Search for the mythical beast of lore.",
+    "Navigate the labyrinth of endless night.",
+    "Ascend the mountain of eternal light.",
+    "Enter the portal to otherworldly realms."
+    ]    
 
     # Create a set of the first characters in the list
     existing_values = {item[0] for item in lst}
 
     # Check for missing values and add them with the default value
     for value in required_values:
+        random.shuffle(fantasy_prompts)  # Shuffle the list of fantasy prompts
+        # Select a random prompt from the shuffled list
+        default_value = f"{fantasy_prompts[0]}"
         if value not in existing_values:
             lst.append(f"{value}) {default_value}")
     

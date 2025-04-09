@@ -69,15 +69,12 @@ Mystic AI is a dynamic story experience using OpenAI's ChatGPT and DALL-E. Users
 1. **Setup**:
    - Users enter their OpenAI API key in the sidebar to authenticate.
    - They input a story genre or theme to begin.
-
 2. **Story Generation**:
    - The app sends the user input to ChatGPT to generate a story.
    - Prompts for images are extracted and sent to DALL-E for image generation.
-
 3. **Interactive Storytelling**:
    - Each story section is displayed with text, an image, and user choices.
    - User selections determine the next part of the story.
-
 4. **Dynamic Updates**:
    - The app dynamically updates the story sections and maintains state across interactions.
 
@@ -194,7 +191,7 @@ For the Mystic AI application, the application development steps involved prepar
 **Information**
 -
 **Baseline Performance:**
-- Prompt passed directly from GPT: Initially, the prompt was used as-is, directly from GPT without any modifications or cleanup. No cleanup: The DALLE prompt contained various formatting issues such as newline (\n) and carriage return (\r) characters, as well as unnecessary prefixes.
+- DAllE Prompt passed directly from GPT: Initially, the prompt was used as-is, directly from GPT without any modifications or cleanup. The DALLE prompt contained various formatting issues such as newline (\n) and carriage return (\r) characters, as well as unnecessary prefixes.
 - Response Time Results
    - ![image](resources/content/perf_bl1.png)
    - ![image](resources/content/perf_bl2.png)
@@ -222,7 +219,7 @@ For the Mystic AI application, the application development steps involved prepar
       - ![image](resources/content/perf_imp3.png)
       - ![image](resources/content/perf_imp4.png)
 
-**Performance Results**
+**Performance Results - Cumalative**
 - Baseline Response Time: 14.84 seconds
 - Post-Modification Response Time: 9.73 seconds
 - Improvement: 34.43%
@@ -321,7 +318,9 @@ This application enhances storytelling, making it more interactive and visually 
 
 - [LangChain Documentation](https://python.langchain.com/)
 
-- [OpenAI API](https://platform.openai.com/docs/)
+- [OpenAI ChatGPT API](https://platform.openai.com/docs/)
+
+- [OpenAI GPT-4o mini](https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/)
 
 - [DALL-E 3 API](https://help.openai.com/en/articles/8555480-dall-e-3-api)
 

@@ -1,5 +1,6 @@
 from langchain import OpenAI, ConversationChain, LLMChain, PromptTemplate
 from langchain.memory import ConversationBufferWindowMemory
+from langchain.chains.summarize import load_summarize_chain
 import os
 
 def initialize_model():   
@@ -43,3 +44,5 @@ AI:
     )
     
     return llm_chain
+
+
