@@ -37,9 +37,9 @@ Mystic AI is a dynamic story experience using OpenAI's ChatGPT and DALL-E. Users
 	-  [resources/website/icons](resources/website/icons): images for the UI
 
 * Project
-	-  [Resources/content](Resources/content) - Directory containing all of the image files used by the code
- 	-  [Resources/data](Resources/data) - Directory containing all of the data files used by the code
- 	-  [Resources/data](Resources/presentation) - Directory containing all of the presentation files used by the code 	
+	-  [resources/content](resources/content) - Directory containing all of the image files used by the code
+ 	-  [resources/data](resources/data) - Directory containing all of the data files used by the code
+ 	-  [resources/presentation](resources/presentation) - Directory containing all of the presentation files used by the code 	
  	-  `README.md`: This documentation 
 
 [🔼 Back to top](#idtop)
