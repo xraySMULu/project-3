@@ -247,7 +247,7 @@ For the Mystic AI application, the application development steps involved prepar
 1. **Challenges in GPT Response**: Chat-GPT struggled at times returning storyline options but demonstrated that it can generate coherent, engaging, and contextually relevant stories, showcasing its potential in creative industries.
 2. **Seamless Integration**: The combination of ChatGPT and DALL-E highlights the effectiveness of integrating multiple AI models to deliver a unified experience.
 3. **Importance of GPT Cleanup**: Properly parsing and cleaning AI-generated responses is critical to ensuring the content is user-friendly and visually appealing.
-4. **Challenges in Image Generation**: While DALL-E generates impressive visuals, ensuring the images meet size and quality requirements as well as slow to load with malformed prompts. 
+4. **Challenges in Image Generation**: While DALL-E generates impressive visuals, priorities included ensuring the images meet size and quality requirements as well as addressing slow load times from malformed prompts.
 5. **Scalability and Adaptability**: The app's modular architecture allows for easy expansion, making it adaptable for various use cases, such as education, entertainment, or creative writing tools.
 
 [🔼 Back to top](#idtop)
