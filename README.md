@@ -39,8 +39,8 @@ The business question we hope to answer is: *How can Mystic AI leverage advanced
 	-  [resources/website/icons](resources/website/icons): images for the UI
 
 * Project
-	-  [resources/code](resources/code) - Directory containing testing code. Code used for exploratory and testing.
-   -  [resources/code/beta](resources/code/beta) - Directory for non-relevant code
+	-  [code](code) - Directory containing testing code. Code used for exploratory and testing.
+   -  [code/beta](code/beta) - Directory for non-relevant code
    -  [resources/content](resources/content) - Directory containing all of the image files used by the code
  	-  [resources/data](resources/data) - Directory containing all of the data files used by the code
  	-  [resources/presentation](resources/presentation) - Directory containing all of the presentation files used by the code 	
