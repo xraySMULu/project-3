@@ -1,4 +1,4 @@
-# **Mystic Ai: Dynamic Story Creator**
+# **Mystic AI: Dynamic Story Creator**
 <a id="idtop"></a>  
 <img src="./resources/content/hdr.png" width="1200">
 
@@ -79,9 +79,9 @@ git clone https://github.com/xraySMULu/project-3
 
 ```
 
-2. cd resources/website/app.py
+2. cd resources/website
 
-2. Install dependencies:
+3. Install dependencies:
 
 ```bash
 
