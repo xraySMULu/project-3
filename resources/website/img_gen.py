@@ -37,7 +37,7 @@ def create_dalle_image(api_client,prompt):
     prompt = prompt.replace("\n", " ").replace("\r", " ")
     for prefix in ["A.", "B.", "C.", "D.", "E.", "F.", "A)", "B)", "C)", "D)", "E)", "F)"]:
         prompt = prompt.replace(prefix, "")
-    prompt = "Return an image that is detailed and descriptive with the subject being mythical, the settings being medieval, the style being classic and the mood being dark but is also very simple with basic detail: " + prompt 
+    prompt = "Return an image that is detailed and descriptive, the setting being medieval, the style being classic and the mood being dark but is also very simple with basic detail: " + prompt 
         
     try:
     # Code that uses the Streamlit component
