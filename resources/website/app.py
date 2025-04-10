@@ -12,11 +12,7 @@ from langchain_openai import ChatOpenAI
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain.chains.llm import LLMChain
 from langchain_core.prompts import ChatPromptTemplate
-
-import validators
 import time
-import contextlib
-
 from llm_init import *  # Custom module for initializing the language model
 from img_gen import *  # Custom module for image generation
 from util import *  # Custom module for utility functions
@@ -185,7 +181,6 @@ def get_story_and_image(user_resp):
 
 @st.cache_data(show_spinner='Generating your story...')
 # Function to handle user input, generate story content, and update session state
-
 def get_output(_pos: DeltaGenerator, el_id='', genre=''):
     st.session_state.keep_graphics = True
     
@@ -205,13 +200,15 @@ def get_output(_pos: DeltaGenerator, el_id='', genre=''):
         data = get_story_and_image(user_choice)
         add_new_data(data['Story'], data['Radio Label'], data['Options'], data['Image'])
     
-    
+# Function to generate content for each story section
+# This function creates an expander for each part of the story, displaying the story text, options, and image
+# It also handles user interactions, such as submitting choices and summarizing the story    
 def generate_content(story, lbl_text, opts: list, img, el_id):   
  
     global my_story_string
     my_story_string = ''
     prompt_template = """
-    Create a story title. For each section, make a title and a concise paragraph:
+    Create a story title. For each section, make a section title and a short paragraph of 1-2 sentences:
     Context:{text}
     """
     prompt = PromptTemplate(template=prompt_template, input_variables=["text"])   
@@ -266,7 +263,8 @@ def generate_content(story, lbl_text, opts: list, img, el_id):
                 except Exception as e:
                     st.exception(f"Exception: {e}")
 
-
+# Function to add new data to the session state
+# This function generates a unique ID for each new story section and appends it to the session state
 def add_new_data(*data):   
     el_id = str(uuid.uuid4())
     st.session_state['cols'].append(el_id)

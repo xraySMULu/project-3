@@ -4,6 +4,7 @@ from PIL import Image
 from io import BytesIO
 import random
 
+#fucntion to cleanup the list
 def trim_lst(lst):
     
     # Initialize an empty list to store the ordered options
@@ -25,7 +26,7 @@ def trim_lst(lst):
     opts_rtn = sort_lst(opts_ordered_1, opts_ordered_2)
 
     return opts_rtn
-
+# function to ensure the list has all values
 def ensure_lst_values(lst):
     required_values = ['A', 'B', 'C', 'D', 'E', 'F']
     #default_value = "Think about what you want to do next."
@@ -65,7 +66,7 @@ def ensure_lst_values(lst):
     lst = sort_lst_by_char1(lst)
     # Return the updated list
     return lst
-
+# function to sort the list by the first character
 def sort_lst_by_char1(lst):
     lst_rtn = []
     # Define the desired order
@@ -81,7 +82,7 @@ def sort_lst_by_char1(lst):
         lst_rtn = opts1
     
     return lst_rtn
-
+# function to sort and select best lst
 def sort_lst(lst1,lst2):
     lst_rtn = []
     # Define the desired order

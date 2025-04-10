@@ -2,7 +2,7 @@ from langchain import OpenAI, ConversationChain, LLMChain, PromptTemplate
 from langchain.memory import ConversationBufferWindowMemory
 from langchain.chains.summarize import load_summarize_chain
 import os
-
+#fucntion to initialize the model
 def initialize_model():   
     
     template = """
