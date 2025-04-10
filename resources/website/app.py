@@ -153,7 +153,7 @@ def get_story_and_image(user_resp):
                 #clean up the response
                 scrubbed_resp = response
                 scrubbed_resp = scrubbed_resp.replace("\n", " ").replace("\r", " ")
-                for prefix in ["Prompt:", "Visual Prompt:", "Image Prompt:", "Image", "Provide an image prompt:", "Instructions:","-- ", "--", "A.", "B.", "C.", "D.", "E.", "F.", "A)", "B)", "C)", "D)", "E)", "F)"]:
+                for prefix in ["Prompt:", "Visual Prompt:", "Image Prompt:", "A.", "B.", "C.", "D.", "E.", "F.", "A)", "B)", "C)", "D)", "E)", "F)"]:
                     scrubbed_resp = scrubbed_resp.replace(prefix, "")               
                 story += f'{scrubbed_resp}\n'
         except IndexError:
