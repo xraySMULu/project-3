@@ -6,8 +6,8 @@
 * [Project Overview](#Project-Overview)
 * [File Navigation](#File-Navigation)
 * [Features](#Features)
-* [How It Works](#How-It-Works)
 * [Installation](#Installation)
+* [How It Works](#How-It-Works)
 * [Usage Instructions](#Usage-Instructions)
 * [Demo and Slideshow](#Demo-and-Slideshow)
 * [Application Development](#Application-Development)
@@ -69,24 +69,6 @@ Mystic AI offers a captivating story experience powered by OpenAI's ChatGPT, GPT
 [🔼 Back to top](#idtop)
 <hr>
 
-## How It Works
-1. **Setup**:
-   - Users enter their OpenAI API key in the sidebar to authenticate.
-   - They input a story genre or theme to begin.
-2. **Story Generation**:
-   - The app sends the user input to ChatGPT to generate a story.
-   - Prompts for images are extracted and sent to DALL-E for image generation.
-3. **Interactive Storytelling**:
-   - Each story section is displayed with text, an image, and user choices.
-   - User selections determine the next part of the story.
-4. **Dynamic Updates**:
-   - The app dynamically updates the story sections and maintains state across interactions.
-5. **Story Summary**:
-   - Users can summarize their story at any time.
-
-[🔼 Back to top](#idtop)
-<hr>
-
 ## Installation
 
 1. Clone the repository:
@@ -106,6 +88,24 @@ git clone https://github.com/xraySMULu/project-3
 pip install -r requirements.txt
 
 ```
+
+[🔼 Back to top](#idtop)
+<hr>
+
+## How It Works
+1. **Setup**:
+   - Users enter their OpenAI API key in the sidebar to authenticate.
+   - They input a story genre or theme to begin.
+2. **Story Generation**:
+   - The app sends the user input to ChatGPT to generate a story.
+   - Prompts for images are extracted and sent to DALL-E for image generation.
+3. **Interactive Storytelling**:
+   - Each story section is displayed with text, an image, and user choices.
+   - User selections determine the next part of the story.
+4. **Dynamic Updates**:
+   - The app dynamically updates the story sections and maintains state across interactions.
+5. **Story Summary**:
+   - Users can summarize their story at any time.
 
 [🔼 Back to top](#idtop)
 <hr>
