@@ -11,7 +11,7 @@
 * [Usage Instructions](#Usage-Instructions)
 * [Demo and Slideshow](#Demo-and-Slideshow)
 * [Application Development](#Application-Development)
-* [Performance Optimization](#Performance-Optimization)
+* [Exploration and Optimization](#Exploration-and-Optimization)
 * [Additional Explanations and Major Findings](#Additional-Explanations-and-Major-Findings)
 * [Additional Questions and Plan for future development](#Additional-Questions-and-Plan-for-future-development)
 * [Conclusion](#Conclusion)
@@ -22,22 +22,24 @@
 
 ## Mystic AI - Dynamic Story Creator
 
-Mystic AI is a dynamic story experience using OpenAI's ChatGPT and DALL-E. Users can input a story genre or theme, and the app generates a dynamic story with accompanying images and user choices.
+Mystic AI offers a captivating story experience powered by OpenAI's ChatGPT, GPT-40 Mini, and DALL-E, alongside Langchain for seamless conversation management. Users can input their preferred story genre or theme, and the app dynamically generates a narrative complete with engaging images, interactive user choices, and a concise summary.
 
 [🔼 Back to top](#idtop)
 <hr>
 
 ## File Navigation
-* Website
-   -  [resources/website](resources/website) - Directory containing all of the website files used by the code
-	-  [resources/website/app.py](resources/website/app.py): Entry point for the web application		
+* Website - Main Production code
+   -  [resources/website](resources/website) - Directory containing all of the website files used by the code. Main Production code
+	-  [resources/website/app.py](resources/website/app.py): Entry point for the web application. 		
 	-  [resources/website/llm_init.py](resources/website/llm_init.py): OpenAI LLM initialization and prompt handling
 	-  [resources/website/img_gen.py](resources/website/img_gen.py): DALL-E 3 Image generation helper
 	-  [resources/website/requirements.txt](resources/website/requirements.txt): dependencies for the UI
 	-  [resources/website/icons](resources/website/icons): images for the UI
 
 * Project
-	-  [resources/content](resources/content) - Directory containing all of the image files used by the code
+	-  [resources/code](resources/code) - Directory containing testing code. Code used for exploratory and testing.
+   -  [resources/code/beta](resources/code/beta) - Directory for non-relevant code
+   -  [resources/content](resources/content) - Directory containing all of the image files used by the code
  	-  [resources/data](resources/data) - Directory containing all of the data files used by the code
  	-  [resources/presentation](resources/presentation) - Directory containing all of the presentation files used by the code 	
  	-  `README.md`: This documentation 
@@ -57,9 +59,11 @@ Mystic AI is a dynamic story experience using OpenAI's ChatGPT and DALL-E. Users
    - DALL-E generates images based on prompts extracted from the story.
 4. **Interactive User Choices**:
    - Users can make choices at each story section, influencing the next part of the story.
-5. **Session State Management**:
+5. **Story Summary**:
+   - Users can summarize their story at any time.
+6. **Session State Management**:
    - The app uses Streamlit's session state to manage user inputs, story sections, and app state.
-6. **Sidebar Configuration**:
+7. **Sidebar Configuration**:
    - Includes instructions, API key input, and app information.
 
 [🔼 Back to top](#idtop)
@@ -77,6 +81,8 @@ Mystic AI is a dynamic story experience using OpenAI's ChatGPT and DALL-E. Users
    - User selections determine the next part of the story.
 4. **Dynamic Updates**:
    - The app dynamically updates the story sections and maintains state across interactions.
+5. **Story Summary**:
+   - Users can summarize their story at any time.
 
 [🔼 Back to top](#idtop)
 <hr>
@@ -118,6 +124,8 @@ streamlit run resources/website/app.py
 3. Input a story genre or theme in the main container.
 4. Click "Begin story" to start generating the story.
 5. Make choices at each story section to progress the story.
+6. Click 'Summarize' button at any time to summarize your storyline.
+7. To start over, click the 3 dot icon in the upper right, select 'Clear cache'>OK. Then select 'Rerun'
 6. Enjoy the interactive storytelling experience!
 
 [🔼 Back to top](#idtop)
@@ -185,13 +193,13 @@ For the Mystic AI application, the application development steps involved prepar
 [🔼 Back to top](#idtop)
 <hr>
 
-## Performance Optimization - 
+## Exploration and Optimization
+In our optimization efforts, we explored using additional datasets to fine-tune the model, aiming to enhance its performance and accuracy. We also delved into sentiment analysis to better understand the nuances of user interactions. However, we faced limitations in implementing a robust evaluation procedure against pre-trained models, which hindered our ability to benchmark improvements effectively. Considering these challenges, we decided to leverage prompt engineering as a strategic approach to optimize the DALL-E model's response times, ensuring more efficient and timely outputs. 
 
-### DALL-E 3 Image Model
-**Information**
--
+### DALL-E 3 Image Model Response Time
+
 **Baseline Performance:**
-- DAllE Prompt passed directly from GPT: Initially, the prompt was used as-is, directly from GPT without any modifications or cleanup. The DALLE prompt contained various formatting issues such as newline (\n) and carriage return (\r) characters, as well as unnecessary prefixes.
+- DALLE Prompt passed directly from GPT: Initially, the prompt was used as-is, directly from GPT without any modifications or cleanup. The DALLE prompt contained various formatting issues such as newline (\n) and carriage return (\r) characters, as well as unnecessary prefixes.
 - Response Time Results
    - ![image](resources/content/perf_bl1.png)
    - ![image](resources/content/perf_bl2.png)
@@ -226,20 +234,6 @@ For the Mystic AI application, the application development steps involved prepar
 
 
 ## Additional Explanations and Major Findings
-
-### Additional Explanations
-
-1. **AI Integration**: Mystic AI combines OpenAI's ChatGPT for natural language processing and storytelling with DALL-E for generating visually appealing images. This integration demonstrates how AI can work cohesively to create an immersive user experience.
-2. **User Interactivity**: The application allows users to actively participate in the storytelling process by selecting themes and making choices that influence the narrative. This interactivity highlights the potential of AI to create personalized and engaging content.
-3. **Session State Management**: By leveraging Streamlit's session state, the app ensures a seamless user experience, maintaining story progression and user inputs across interactions without requiring page reloads.
-4. **Error Handling**: The app includes mechanisms to handle potential API errors gracefully, ensuring reliability and usability.
-
-
-[🔼 Back to top](#idtop)
-<hr>
-
-
-### Major Findings
 
 1. **Challenges in GPT Response**: Chat-GPT struggled at times returning storyline options but demonstrated that it can generate coherent, engaging, and contextually relevant stories, showcasing its potential in creative industries.
 2. **Seamless Integration**: The combination of ChatGPT and DALL-E highlights the effectiveness of integrating multiple AI models to deliver a unified experience.

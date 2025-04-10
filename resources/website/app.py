@@ -112,6 +112,8 @@ def get_story_and_image(user_resp):
     bot_response = llm_model.predict(input=user_resp)
     print(bot_response)
     response_list = bot_response.split("\n")
+    
+    # Optimization: Using Time module to return the time taken to generate the response, i was able to get a baseline result. After modifications, reponse time improved 34%
     gpt_end_time = time.perf_counter()  # end the timer
     gpt_elasped_time = gpt_end_time - gpt_start_time  # Calculate elapsed time    
     # Display the response time in the console

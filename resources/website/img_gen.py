@@ -33,10 +33,13 @@ def create_dalle_image(api_client,prompt):
     Returns:
     str: URL of the generated image.
     """
-    #clean up the prompt
+    ## Preprocessing & Optimization: Using various prompt edits and these methods, i was able to improve response time by 34%
+    ## prompt = "I NEED to test how the tool works with extremely simple prompts. DO NOT add any detail, just use it AS-IS:" + prompt
+    ## prompt = get_first_sentence(prompt)
     prompt = prompt.replace("\n", " ").replace("\r", " ")
     for prefix in ["A.", "B.", "C.", "D.", "E.", "F.", "A)", "B)", "C)", "D)", "E)", "F)"]:
         prompt = prompt.replace(prefix, "")
+    #using this prompt for production
     prompt = "Return an image that is detailed and descriptive, the setting being medieval, the style being classic and the mood being dark but is also very simple with basic detail: " + prompt 
         
     try:
